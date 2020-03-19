@@ -14,7 +14,8 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  firebase.firestore().settings({timestampsInSnappshots: true})
+  //firebase.analytics();
+  //const settings = {timestampsInSnapshots: true}
+  firebase.firestore();
 
   export default firebase;
