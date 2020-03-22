@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 
 const ProjectDetails = (props) => {
-    //console.log(props);
-    //const id = props.match.params.id;
-    //console.log(id);
-    const {project} = props ;
     
+    const {project, user} = props ;
+    //console.log(project);
+    if (!user.uid) return <Redirect to= '/signin'/>
     if (project) {
         return (
             <div className="container section project-details">
@@ -20,7 +21,7 @@ const ProjectDetails = (props) => {
                     </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {project.authorFirstName + ' ' + project.authorLastName}</div>
-                        <div>2nd of August, 2am</div>
+                        <div>{moment(project.createdAt.toDate()).calendar()}</div>
                     </div>
                 </div>
             </div>
@@ -40,7 +41,8 @@ const mapStateToProps = (state, ownProps) => {
     const project = projects ? projects[id]: null;
    
     return {
-        project :project
+        project :project,
+        user:state.firebase.auth
     }
 }
 

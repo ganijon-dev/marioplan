@@ -16,11 +16,7 @@ const projectReducer = (state = initState, action) => {
             console.log('ERROR Creating Project', action.error)
             return state;    
         default : 
-            break
-    
-
+            return state;
     }
-   
-    return state;
 }
 export default projectReducer;
