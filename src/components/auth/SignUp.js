@@ -15,7 +15,7 @@ class SignUp extends Component {
     }
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.props);
+        
         this.props.signUp(this.state);
     } 
 
