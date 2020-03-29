@@ -14,11 +14,12 @@ import 'firebase/firestore'
 import 'firebase/auth'
 import { useSelector  } from 'react-redux'
 import { isLoaded  } from 'react-redux-firebase';
+import { Loader } from './components/loader/Loader';
 
 
 //import fbConfig from './config/fbConfig';
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyC8HSrr5RARU9rwHeGWxpzG8JneNSs0RMk",
     authDomain: "gtmarioplan.firebaseapp.com",
     databaseURL: "https://gtmarioplan.firebaseio.com",
@@ -53,8 +54,9 @@ const rrfConfig = {
     }
 function AuthIsLoaded({ children }) {
     const auth = useSelector(state => state.firebase.auth)
-    if (!isLoaded(auth)) return <div className= 'container center'><h3 className='text-center white-text'>Loading Screen...</h3></div>;
-        return children
+    if (!isLoaded(auth)) return <Loader/>;
+    
+    return children
 }
 
 

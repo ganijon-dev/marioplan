@@ -5,19 +5,21 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
+import DashboardLoader from '../loader/DashboardLoader';
 
 
 class Dashboard extends Component {
     
     render() {
-        const { user , notifications} = this.props;
+        const { user , notifications, projects} = this.props;
         
         if (!user.uid) return <Redirect to= '/signin'/> 
         return (
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m6">
-                    <ProjectList projects = {this.props.projects}/>
+                        {projects ? <ProjectList projects = {projects} /> : <DashboardLoader/>}
+                    
                     </div>
                     <div className="col s12 m5 offset-m1">
                         <Notifications notifications={notifications}/>
