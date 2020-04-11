@@ -7,18 +7,10 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
-    background-image: url('/img/mario-bg.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom;
-    background-color: #95e8f3;
     min-height: 100%;
-}
-
-form {
-    padding: 20px;
-    margin-top: 60px;
-    border-radius: 7px;
 }
 
 form button,

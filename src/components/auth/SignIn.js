@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
 import { Redirect } from 'react-router-dom';
-
+import './Signin.scss';
 
 class SignIn extends Component {
     
@@ -25,24 +25,43 @@ class SignIn extends Component {
         if (user.uid) return <Redirect to='/' />
         return (
             <div className='container'> 
-                <form className="white" onSubmit={this.handleSubmit}>
-                    <h5 className="grey-text text-darken-3">Sign In</h5>
-                    <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input onChange={this.handleChange} type="email" id="email"/>
+               
+        <div className="logo">
+            <span className='logo__main-name'>Mario</span>
+            <span className='logo__second-name'> Plan</span>
+        </div>
+        <div className="sign-in">
+
+            <div className="form-container">
+                <div className="sign-in__title text-green ">Sign in to Account</div>
+                <div className="sign-in__line bg-green line"></div>
+                <div className="social">
+                    <div>
+                        <i className="fab fa-facebook-f fa-2x"></i>
                     </div>
 
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input onChange={this.handleChange} type="password" id="password"/>
+                    <div>
+                        <i className="fab fa-github-alt fa-2x"></i>
                     </div>
-                    <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Log In</button>
-                        <div className="red-text center">
+                    <div>
+                        <i className="fab fa-google fa-2x"></i>
+                    </div>
+
+                </div>
+                <p className='social__subtitle'>or use your email account</p>
+
+                <form id='sign-in__form' onSubmit= {this.handleSubmit}>
+                    <input  onChange={this.handleChange} type="email" id="email" name="email" placeholder="Email" />
+                    <input  onChange={this.handleChange} type="password" id="password" name="password" placeholder="Password" />
+                    <div className="red-text center">
                             {authError ? <p>{authError.message}</p> : null}
-                        </div>
                     </div>
+                    <button type="submit" className="btn btn-secondary">Sign up</button>
+                    
                 </form>
+
+            </div>
+    </div>
             </div>
         )
     }
@@ -60,3 +79,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(SignIn);
+
+

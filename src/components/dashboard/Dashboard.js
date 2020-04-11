@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Notifications from './Notifications';
 import ProjectList from '../projects/ProjectList';
+import Navbar from '../layout/Navbar';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -15,6 +16,8 @@ class Dashboard extends Component {
         
         if (!user.uid) return <Redirect to= '/signin'/> 
         return (
+            <Fragment>
+                 <Navbar/>
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m6">
@@ -26,6 +29,8 @@ class Dashboard extends Component {
                     </div>
                 </div>
             </div>
+            </Fragment>
+           
         )
     }
 }
