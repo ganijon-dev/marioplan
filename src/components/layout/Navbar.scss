@@ -1,0 +1,68 @@
+$main-color: #0DCA78;
+.nav-wrapper {
+    width: 100%;
+    box-shadow: 0px 1px 10px #999;
+}
+
+.brand-logo {
+    display: inline-flex;
+}
+
+.right {
+    display: inline-flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .nav-item {
+        //margin-right: 15px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.2s ease-in;
+            @media (max-width: 370px) {
+                padding: 5px;
+            }
+            .nav-item__icon {
+                margin-right: 10px;
+                @media (max-width: 640px) {
+                    margin-right: 0;
+                }
+            }
+            span {
+                color: rgb(38, 38, 38);
+                @media (max-width: 640px) {
+                    display: none;
+                }
+            }
+        }
+        a:hover {
+            color: #fff;
+            background-color: $main-color;
+            .nav-item__icon,
+            span {
+                fill: #fff;
+                color: #fff;
+            }
+        }
+    }
+    .user_initials {
+        width: 32px;
+        height: 32px;
+        border-radius: 32px;
+        background-color: #ff5555;
+        padding: 10px;
+        a {
+            color: white;
+        }
+    }
+}

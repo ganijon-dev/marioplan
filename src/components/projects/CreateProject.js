@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 import { connect} from 'react-redux';
 import { createProject } from '../../store/actions/projectActions';
 import { Redirect } from 'react-router-dom';
+import firebase from 'firebase';
+
 
 class CreateProject extends Component {
     state  = {
         title:'',
-        content:''
+        content:'',
+        image:null,
     };
+    
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
@@ -19,8 +23,18 @@ class CreateProject extends Component {
         this.props.history.push('/')
         
     } 
+
+    handleImageUpload = event => {
+        
+        if (event.target.files) {
+            const image = event.target.files[0];
+            this.setState(() => ({image}));
+            console.log(event.target.files[0]);
+        }
+    }
     render() {
         const {user} = this.props;
+        //console.log(this.props)
         
         if (!user.uid) return <Redirect to='/signin'/>
         return (
@@ -29,12 +43,13 @@ class CreateProject extends Component {
                     <h5 className="grey-text text-darken-3">Create New Project</h5>
                     <div className="input-field">
                         <label htmlFor="title">Title</label>
-                        <input onChange={this.handleChange} type="text" id="title"/>
+                        <input onChange={this.handleChange} type="text" id="title" required/>
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="content">Project Content</label>
-                        <textarea onChange={this.handleChange} className='materialize-textarea' name="content" id="content"></textarea>
+                        <textarea required onChange={this.handleChange} className='materialize-textarea' name="content" id="content"></textarea>
+                        <input type="file" onChange={ this.handleImageUpload}/>
                     </div>
                     <div className="input-field">
                         <button className="btn pink lighten-1 z-depth-0">Create</button>
@@ -46,9 +61,10 @@ class CreateProject extends Component {
 }
 
 const mapStateToProps = state => {
-    
+   console.log(state);
     return {
-        user: state.firebase.auth
+        user: state.firebase.auth,
+        storage: state.firebase
     }
 
 }

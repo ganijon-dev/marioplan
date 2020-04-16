@@ -8,46 +8,45 @@ $main-color: #0DCA78;
 .container {
     max-width: 1920px;
     margin: auto;
-    width: 100%;
+    width: 90%;
 }
 
 .form-container {
     max-width: 400px;
     width: 100%;
-    padding: 0 20px;
 }
 
 .logo {
     display: flex;
     font-size: 28px;
-    padding: 20px;
+    padding: 20px 0px;
     & .logo__main-name {
         color: $main-color;
     }
     & .logo__second-name {
         font-weight: bold;
+        color: black;
     }
 } //Done 
 .sign-in {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     .sign-in__title {
         font-size: 40px;
         text-align: center;
     }
     #sign-in__form {
         width: 100%;
-        #password,
-        #email {
+        input {
             width: 100%;
-            padding: 0 10px;
+            padding: 15px 10px;
             border-radius: 6px;
             margin-bottom: 20px;
             outline: none;
@@ -62,9 +61,9 @@ $main-color: #0DCA78;
     }
     .social__subtitle {
         color: #999999;
-        font-size: 20px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        font-size: 14px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         text-align: center;
     }
     .social {
@@ -73,7 +72,6 @@ $main-color: #0DCA78;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 20px;
         &>div {
             width: 60px;
             height: 60px;
@@ -87,27 +85,11 @@ $main-color: #0DCA78;
         }
     }
 } //Done
-.sign-up {
-    width: 40%;
-    background-image: url('/img/Group\ 1.png');
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    &__title {
-        font-size: 64px;
-    }
-    &__subtitle {
-        padding: 0 10px;
-    }
-}
-
 .line {
     width: 80px;
     height: 4px;
     border-radius: 10px;
-    margin: 20px auto 0 auto;
+    margin: 20px auto;
 }
 
 .bg-white {
@@ -115,12 +97,13 @@ $main-color: #0DCA78;
 }
 
 .bg-green {
-    background: #0DCA78;
+    background: $main-color;
 }
 
 .btn {
     width: 160px;
     border-radius: 40px;
+    padding: 10px;
 }
 
 .btn-primary {
@@ -137,7 +120,7 @@ $main-color: #0DCA78;
 }
 
 .text-green {
-    color: #0DCA78;
+    color: $main-color;
 }
 
 form {
@@ -145,4 +128,12 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.register {
+    color: #999999;
+    text-align: center;
+    &__link {
+        color: $main-color;
+    }
 }

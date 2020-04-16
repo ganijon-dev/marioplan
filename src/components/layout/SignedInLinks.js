@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Exit from './Exit';
 import { connect } from 'react-redux';
 import { signOut } from '../../store/actions/authActions';
+import AddProjectIcon from './AddProjectIcon';
 
 const SignedInLinks = (props) => {
     
@@ -9,9 +11,9 @@ const SignedInLinks = (props) => {
     
     return (
         <ul className="right">
-            <li><NavLink to='/create' className='nav' activeClassName='active-btn'>New Project</NavLink></li>
-            <li><NavLink to='/' className='nav' onClick= {signOut}>Log Out</NavLink></li>
-    <li><NavLink to='/' className='btn btn-floating blue lighten-1' >{profile.initials}</NavLink></li>
+            <li><NavLink to='/create' className='nav' activeClassName='active-btn'><AddProjectIcon/></NavLink></li>
+    <li><NavLink to='/' className='nav' onClick= {signOut}><Exit/></NavLink></li>
+    <li><NavLink to='/' className='' >{profile.initials}</NavLink></li>
         </ul>
     );
 }

@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-//import Navbar from './components/layout/Navbar';
+import {connect } from 'react-redux';
+import Navbar from './components/layout/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import ProjectDetails from './components/projects/ProjectDetails';
 import SignIn from './components/auth/SignIn';
@@ -8,11 +9,14 @@ import SignUp from './components/auth/SignUp';
 import CreateProject from './components/projects/CreateProject';
 
 class App extends Component {
+    
     render() {
+      const userID = this.props.user.uid;
       return ( 
         <BrowserRouter>
         <div className = "App" >  
             {/*<Navbar/>*/}
+            {userID ? <Navbar/>: null  }
             <Switch>
               <Route exact path= '/' component= {Dashboard}/>
               <Route path= '/project/:id' component= {ProjectDetails}/>
@@ -27,4 +31,12 @@ class App extends Component {
     };
 }
 
-export default App;
+const mapStateToProps = state => {
+    
+  return {
+      user: state.firebase.auth,
+      
+  }
+}
+
+export default connect(mapStateToProps)(App);

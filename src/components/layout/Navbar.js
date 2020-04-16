@@ -1,22 +1,59 @@
 import React from 'react';
-import { Link} from 'react-router-dom';
-import SignedInLinks from './SignedInLinks';
-import SignedOutLinks from './SignedOutLinks';
+import { Link, NavLink} from 'react-router-dom';
+import AddProjectIcon from './AddProjectIcon';
+import Exit from './Exit';
+import Logo from './Logo';
+import './Navbar.scss';
 import { connect } from 'react-redux';
+import { signOut } from '../../store/actions/authActions';
+import NotificationIcon from './NotificationIcon';
 const Navbar = (props) => {
-    const { user , profile } = props;
+   
+    const { signOut, profile } = props;
     
     return (
-        <nav className="nav-wrapper grey darken-3">
+        <div className="nav-wrapper grey darken-3">
             <div className="container">
-                <Link to ='/' className = 'brand-logo left'> MarioPlan </Link>
+                <nav className='nav'>
+                <Link to ='/' className = 'brand-logo left'><Logo/> </Link>
+
+                <ul className="right">
+                    <li className='nav-item'>
+                        <NavLink to='/create' className='nav' activeClassName='active-btn'>
+                            <AddProjectIcon className='nav-item__icon'/>
+                            <span>Add</span>
+                        </NavLink></li>
+                    <li className='nav-item'>
+                        <NavLink to='/' className='nav'>  
+                            <NotificationIcon className='nav-item__icon'/>
+                            <span>Notifications</span>
+                        </NavLink>
+                        
+                    </li>
+                    <li className='nav-item'>
+                        <NavLink to='/' className='nav' onClick= {signOut} >
+                            <Exit  />
+                            <span>Logout</span>
+                        </NavLink>
+                    </li>
+                    <li className='nav-item user_initials' >
+                        <NavLink to='/' >{profile.initials ? profile.initials[0]:""}</NavLink>
+                    </li>
+        </ul>
                 
-                {(user.uid && profile) ? <SignedInLinks profile ={profile}/> :<SignedOutLinks/> }
+                </nav>
+                
                 
                 
             </div>
-        </nav>  
+        </div>  
     )
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signOut : () => dispatch (signOut())
+    }
 }
 
 const mapStateToProps = state => {
@@ -27,4 +64,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
