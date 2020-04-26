@@ -1,33 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import Notifications from './Notifications';
 import ProjectList from '../projects/ProjectList';
-//import Navbar from '../layout/Navbar';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import DashboardLoader from '../loader/DashboardLoader';
+import Container from '../layout/Container/Container';
 
 
 class Dashboard extends Component {
     
     render() {
         const { user , notifications, projects} = this.props;
-        
         if (!user.uid) return <Redirect to= '/signin'/> 
         return (
-            <Fragment>
                  
-            <div className="dashboard container">
-                
-                        {projects ? <ProjectList projects = {projects} /> : <DashboardLoader/>}
-                    
-            </div>
-            <div className="col s12 m5 offset-m1">
-                {/*<Notifications notifications={notifications}/>*/}
-            </div>
-           
-            </Fragment>
+            <Container>
+                {projects ? <ProjectList projects = {projects} /> : <DashboardLoader/>}         
+            </Container>
            
         )
     }

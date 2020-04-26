@@ -25,14 +25,17 @@ $main-color: #0DCA78;
         display: flex;
         justify-content: center;
         align-items: center;
-        a {
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 10px 15px;
             border-radius: 5px;
             transition: 0.2s ease-in;
             @media (max-width: 370px) {
                 padding: 5px;
             }
-            .nav-item__icon {
+            svg {
                 margin-right: 10px;
                 @media (max-width: 640px) {
                     margin-right: 0;
@@ -45,10 +48,10 @@ $main-color: #0DCA78;
                 }
             }
         }
-        a:hover {
+        .nav-link:hover {
             color: #fff;
             background-color: $main-color;
-            .nav-item__icon,
+            svg,
             span {
                 fill: #fff;
                 color: #fff;
@@ -56,13 +59,26 @@ $main-color: #0DCA78;
         }
     }
     .user_initials {
-        width: 32px;
-        height: 32px;
-        border-radius: 32px;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        border-radius: 35px;
         background-color: #ff5555;
-        padding: 10px;
+        color: white;
+        align-items: center;
+        justify-content: center;
         a {
             color: white;
         }
     }
+}
+
+.profile-link {
+    padding: 5px 10px;
+}
+
+.profile-image {
+    height: 100%;
+    width: 35px;
+    border-radius: 35px;
 }

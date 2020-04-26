@@ -1,0 +1,13 @@
+$main-color: #0DCA78;
+.logo {
+    display: flex;
+    font-size: 28px;
+    padding: 20px 0px;
+    & .logo__main-name {
+        color: $main-color;
+    }
+    & .logo__second-name {
+        font-weight: bold;
+        color: black;
+    }
+}

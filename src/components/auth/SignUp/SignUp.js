@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signUp } from '../../store/actions/authActions';
-import Logo from '../layout/Logo';
-//import './Signin.scss';
+import { signUp } from '../../../store/actions/authActions';
+import Logo from '../../layout/Logo/Logo';
+import classes from './SignUp.module.scss';
+import Container from '../../layout/Container/Container';
 
 class SignUp extends Component {
     state  = {
@@ -23,39 +24,39 @@ class SignUp extends Component {
 
     render() {
         const { authError, user } = this.props;
-        //console.log(authError);
         if (user.uid) return  <Redirect to='/'/>
         return (
             
-            <div className='container'> 
-               
-               <Link to='/'> <Logo/></Link>
-               <div className="sign-in">
+            <Container>
+                <Link to='/'> <Logo/></Link>
+               <div className={classes["sign-up"]}>
 
-                   <div className="form-container">
-                       <div className="sign-in__title text-green ">Create an account</div>
-                       <div className="sign-in__line bg-green line"></div>
+                   <div className={classes["form-container"]}>
+                       <div className={classes["sign-up__title"]}>Create an account</div>
+                       <div className={classes["sign-up__line"]}></div>
                       
 
 
-                       <form id='sign-in__form' onSubmit= {this.handleSubmit}>
+                       <form id={classes['sign-up__form']} onSubmit= {this.handleSubmit}>
                             <input autoFocus={true} onChange={this.handleChange} type="text" id="firstName" name="firstName" placeholder="First Name"  autoComplete='on' required />
                             <input  onChange={this.handleChange} type="text" id="lastName" name="lastName" placeholder="Last Name"  autoComplete='on' required/>
                            <input  onChange={this.handleChange} type="email" id="email" name="email" placeholder="Email"  autoComplete='on' required />
                            <input  onChange={this.handleChange} type="password" id="password" name="password" placeholder="Password"  autoComplete='on' required />
-                           <div className="red-text center">
-                                {authError ? <p>{authError}</p> : null}
+                           
+                                {authError ? <p className={classes['error']}>{authError}</p> : null}
                                 
-                           </div>
-                           <button type="submit" className="btn btn-secondary">Sign up</button>
+                    
+                           <button type="submit" className={classes["sign-up__btn"]}>Sign up</button>
                            
                        </form>
-                       <div className='register' > Already have an account ? <Link to='/signin' className='register__link'>Sign In</Link> </div>
+                       <div className={classes['register']} > Already have an account ? 
+                            <Link to='/signin' className={classes['register__link']}>Sign In</Link> 
+                       </div>
 
                    </div>
                </div>
-
-           </div>
+            </Container>
+               
         )
     }
 }
