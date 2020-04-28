@@ -77,7 +77,7 @@ export const signUpWithFacebook = () => {
           }).then(()=>{
                 dispatch({type : 'SIGNUP_SUCCESS'})
           }).catch(function(error) {
-            console.log('error', error);
+            
             dispatch({type : 'SIGNUP_FAIL', error })
           });
 }
@@ -145,7 +145,7 @@ export const signUpWithGithub = () => {
             // var email = error.email;
             // // The firebase.auth.AuthCredential type that was used.
             // var credential = error.credential;
-            console.log(errorCode);
+           
             // // ...
             dispatch({type : 'SIGNUP_FAIL', error })
           });
