@@ -12,16 +12,14 @@ const Navbar = (props) => {
    
     const { signOut, profile } = props;
 
-    const avatar = () => {
+        let avatar;
         if (profile.imageUrl) {
-            return (
-            <img src ={profile.imageUrl} className={classes['profile-image']}/>)
+           avatar =  <img src ={profile.imageUrl} className={classes['profile-image']}/>    
         }
         else if (profile.initials) {
-            return (
-                <div className={classes['user_initials']}>{profile.initials[0]}</div>);
+            avatar = <div className={classes['user_initials']}>{profile.initials[0]}</div>;
         }
-    }
+    
     
     return (
         <div className={classes["nav-wrapper"]}>
@@ -50,9 +48,8 @@ const Navbar = (props) => {
                             </NavLink>
                         </li>
                         <li className={classes['nav-item']} >
-                            {console.log(profile)}
                             <NavLink to='/' className={classes['profile-link']} >
-                                {avatar()}
+                                {avatar}
                             </NavLink>
                         </li>
                     </ul>

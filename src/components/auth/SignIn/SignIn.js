@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn, signUpWithFacebook, signUpWithGoogle, signUpWithGithub } from '../../../store/actions/authActions';
 import { Redirect, Link } from 'react-router-dom';
-import firebase from 'firebase';
 import Logo from '../../layout/Logo/Logo';
 import classes from './Signin.module.scss';
 import Container from '../../layout/Container/Container';
@@ -68,7 +67,7 @@ class SignIn extends Component {
                             
                         </form>
                         <div className={classes['register']} > Don't have an account ? 
-                        <Link to='/signup' className={classes['register__link']}>Register</Link> </div>
+                        <Link to='/signup' className={classes['register__link']}> Register</Link> </div>
 
                     </div>
                 </div>

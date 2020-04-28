@@ -18,7 +18,7 @@ const ProjectDetails = (props) => {
         return (
             <Container>
                 <div className="image-container">
-                    <img src={project.image} alt="image"/>
+                    <img src={project.image} alt=""/>
                 </div>
                 
                 <div className="project-details">

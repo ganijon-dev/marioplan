@@ -50,7 +50,7 @@ class SignUp extends Component {
                            
                        </form>
                        <div className={classes['register']} > Already have an account ? 
-                            <Link to='/signin' className={classes['register__link']}>Sign In</Link> 
+                            <Link to='/signin' className={classes['register__link']}> Sign In</Link> 
                        </div>
 
                    </div>

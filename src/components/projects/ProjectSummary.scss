@@ -57,7 +57,7 @@ p {
     position: relative;
     background-color: #f2f8f9;
     border-radius: 4px;
-    height: 375px;
+    height: 400px;
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
@@ -101,6 +101,11 @@ p {
 
 h3 {
     margin: 0;
+    height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
 }
 
 .project-list {

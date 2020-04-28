@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect} from 'react-redux';
 import { createProject } from '../../store/actions/projectActions';
 import { Redirect } from 'react-router-dom';
+// eslint-disable-next-line
 import firebase from 'firebase';
 
 
@@ -29,7 +30,6 @@ class CreateProject extends Component {
         if (event.target.files) {
             const image = event.target.files[0];
             this.setState(() => ({image}));
-            console.log(event.target.files[0]);
         }
     }
     render() {
