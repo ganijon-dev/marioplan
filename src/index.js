@@ -65,6 +65,13 @@ function AuthIsLoaded({ children }) {
 
 
 
-ReactDOM.render( < Provider store = { store } > <ReactReduxFirebaseProvider {...rrfProps } > < AuthIsLoaded >
- < App /> </ AuthIsLoaded></ReactReduxFirebaseProvider > </Provider>, document.getElementById('root'));
-        serviceWorker.register();
+ReactDOM.render( 
+    < Provider store = { store } > 
+        <ReactReduxFirebaseProvider {...rrfProps } > 
+            < AuthIsLoaded >
+                < App /> 
+            </ AuthIsLoaded>
+        </ReactReduxFirebaseProvider >
+    </Provider>, document.getElementById('root'));
+    
+serviceWorker.unregister();
