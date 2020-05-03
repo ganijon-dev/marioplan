@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Notifications from './Notifications';
+import Notifications from '../layout/Notification/Notifications';
 import ProjectList from '../projects/ProjectList';
 import { connect } from 'react-redux';
 import { compose } from 'redux';

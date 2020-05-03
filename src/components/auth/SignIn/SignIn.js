@@ -59,9 +59,14 @@ class SignIn extends Component {
                         <p className={classes['social__subtitle']}>or use your email account</p>
 
                         <form id={classes['sign-in__form']} onSubmit= {this.handleSubmit}>
-                            <input  autoFocus={true} onChange={this.handleChange} type="email" id="email" name="email" placeholder="Email"  autoComplete='on' required/>
-                            <input  onChange={this.handleChange} type="password" id="password" name="password" placeholder="Password"  autoComplete='on'required />
-                        
+                            <div className={classes['input-wrapper']}>
+                                <input  autoFocus={true} onChange={this.handleChange} type="email" id="email" name="email"  autoComplete='on' placeholder="Email" required className={classes['input']}/>
+                                <label htmlFor="email" > Email</label>
+                            </div>
+                            <div className={classes['input-wrapper']}>
+                                <input  onChange={this.handleChange} type="password" id="password" name="password"  placeholder="Password"   autoComplete='on'required className={classes['input']} />
+                                <label htmlFor="password"> Password</label>
+                            </div>
                             {authError ? <p className={classes['error']}>{authError.message}</p> : null}
                             <button type="submit" className={classes["sign-in__btn"]}>Sign in</button>
                             

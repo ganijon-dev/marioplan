@@ -38,10 +38,22 @@ class SignUp extends Component {
 
 
                        <form id={classes['sign-up__form']} onSubmit= {this.handleSubmit}>
-                            <input autoFocus={true} onChange={this.handleChange} type="text" id="firstName" name="firstName" placeholder="First Name"  autoComplete='on' required />
-                            <input  onChange={this.handleChange} type="text" id="lastName" name="lastName" placeholder="Last Name"  autoComplete='on' required/>
-                           <input  onChange={this.handleChange} type="email" id="email" name="email" placeholder="Email"  autoComplete='on' required />
-                           <input  onChange={this.handleChange} type="password" id="password" name="password" placeholder="Password"  autoComplete='on' required />
+                            <div className={classes['input-wrapper']}>
+                                <input autoFocus={true} placeholder="First Name" onChange={this.handleChange} type="text" id="firstName" name="firstName"   autoComplete='on' required  className={classes['input']}/>
+                                <label htmlFor="firstName"> First Name</label>
+                            </div>
+                            <div className={classes['input-wrapper']}>
+                                <input  onChange={this.handleChange} type="text" id="lastName" name="lastName"   autoComplete='on' placeholder="Last Name" required className={classes['input']}/>
+                                <label htmlFor="lastName"> Last Name</label>
+                            </div>
+                            <div className={classes['input-wrapper']}>
+                                <input  onChange={this.handleChange} type="email" id="email" name="email"  autoComplete='on' placeholder="Email" required className={classes['input']} />
+                                <label htmlFor="email"> Email</label>
+                            </div>
+                           <div className={classes['input-wrapper']}>
+                                <input  onChange={this.handleChange} type="password" id="password" name="password"  autoComplete='on' placeholder="Password" required  className={classes['input']}/>
+                                <label htmlFor="password"> Password</label>
+                           </div>
                            
                                 {authError ? <p className={classes['error']}>{authError}</p> : null}
                                 

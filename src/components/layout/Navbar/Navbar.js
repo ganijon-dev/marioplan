@@ -8,9 +8,10 @@ import { connect } from 'react-redux';
 import { signOut } from '../../../store/actions/authActions';
 import NotificationIcon from '../Icons/NotificationIcon';
 import Container from '../Container/Container';
+import Notification from '../Notification/Notifications'
 const Navbar = (props) => {
    
-    const { signOut, profile } = props;
+    const { signOut, profile, notifications } = props;
 
         let avatar;
         if (profile.imageUrl) {
@@ -19,7 +20,8 @@ const Navbar = (props) => {
         else if (profile.initials) {
             avatar = <div className={classes['user_initials']}>{profile.initials[0]}</div>;
         }
-    
+        
+       
     
     return (
         <div className={classes["nav-wrapper"]}>
@@ -38,9 +40,10 @@ const Navbar = (props) => {
                                 
                                 <NotificationIcon/>
                                 <span>Notifications</span>
+                                
                             </NavLink>
-                            
                         </li>
+                        {/* <Notification notifications ={notifications}/> */}
                         <li className={classes['nav-item']}>
                             <NavLink to='/' className={classes['nav-link']} onClick= {signOut} >
                                 <Exit  />
@@ -68,10 +71,10 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-    
     return {
         user: state.firebase.auth,
-        profile: state.firebase.profile
+        profile: state.firebase.profile,
+        notifications: state.firestore.data.notifications
     }
 }
 

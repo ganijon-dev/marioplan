@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-import AuthorIcon from '../layout/Icons/AuthorIcon';
-import TimeIcon from '../layout/Icons/TimeIcon';
-import './ProjectDetails.scss';
+import AuthorIcon from '../../layout/Icons/AuthorIcon';
+import TimeIcon from '../../layout/Icons/TimeIcon';
+import classes from './ProjectDetails.module.scss';
 import moment from 'moment';
-import Container from '../layout/Container/Container';
+import Container from '../../layout/Container/Container';
 
 
 const ProjectDetails = (props) => {
@@ -17,21 +17,21 @@ const ProjectDetails = (props) => {
     if (project) {
         return (
             <Container>
-                <div className="image-container">
+                <div className={classes["image-container"]}>
                     <img src={project.image} alt=""/>
                 </div>
                 
                 <div className="project-details">
                 <div className="project-details_card">
                     <div className="card-header">
-        <h2 className="card-title"> {project.title}</h2>
+        <h2 className={classes["card-title"]}> {project.title}</h2>
         
         <p>{project.content}</p>
                     </div>
-                    <div className="card-action grey lighten-4 grey-text">
-                    <div className="card-footer">
-                    <p className="card-author"><AuthorIcon/> <span> {project.authorFirstName  + ' ' + project.authorLastName}</span></p>
-                    <p className="card-timestamp"><TimeIcon/><span>{moment(project.createdAt.toDate()).calendar()}</span></p>
+                    <div>
+                    <div className={classes["card-footer"]}>
+                    <p className={classes["card-author"]}><AuthorIcon/> <span> {project.authorFirstName  + ' ' + project.authorLastName}</span></p>
+                    <p className={classes["card-timestamp"]}><TimeIcon/><span>{moment(project.createdAt.toDate()).calendar()}</span></p>
                     </div>
                     </div>
                 </div>
