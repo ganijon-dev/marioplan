@@ -55,7 +55,7 @@ class CreateProject extends Component {
                         <label htmlFor="content" className={classes['label']}>Content</label>
                     </div>
                     <label htmlFor="file-upload" className={classes["custom-file-upload"]}>
-                        <img src={uploadLogo} className={classes['upload-image']}/>
+                        <img src={uploadLogo} className={classes['upload-image']} alt="upload-logo"/>
                         Upload Image
                     </label>
                     <input id="file-upload" className={classes["file-upload"]} type="file" onChange={ this.handleImageUpload}/>

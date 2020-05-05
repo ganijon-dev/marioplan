@@ -3,11 +3,13 @@ $main-color: #0DCA78;
     display: flex;
     font-size: 28px;
     padding: 20px 0px;
+    font-weight: bold;
     & .logo__main-name {
         color: $main-color;
+        margin-right: 5px;
+        letter-spacing: -2px;
     }
     & .logo__second-name {
-        font-weight: bold;
         color: black;
     }
 }

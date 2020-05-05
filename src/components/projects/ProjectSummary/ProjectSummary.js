@@ -5,6 +5,7 @@ import TimeIcon from '../../layout/Icons/TimeIcon';
 import classes from './ProjectSummary.module.scss'
 const ProjectSummary = ({ project, noImage }) => {
 
+    
    
     return (
         <div className={classes["card"]}>

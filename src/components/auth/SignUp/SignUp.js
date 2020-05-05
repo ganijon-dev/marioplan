@@ -23,7 +23,7 @@ class SignUp extends Component {
     } 
 
     render() {
-        const { authError, user } = this.props;
+        const { signUpError, user } = this.props;
         if (user.uid) return  <Redirect to='/'/>
         return (
             
@@ -55,7 +55,7 @@ class SignUp extends Component {
                                 <label htmlFor="password"> Password</label>
                            </div>
                            
-                                {authError ? <p className={classes['error']}>{authError}</p> : null}
+                                {signUpError ? <p className={classes['error']}>{signUpError.message}</p> : null}
                                 
                     
                            <button type="submit" className={classes["sign-up__btn"]}>Sign up</button>
@@ -74,10 +74,10 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => {
-    
+   
     return {
         user: state.firebase.auth,
-        authError: state.auth.authError,
+        signUpError: state.auth.authError,
     }
 }
 

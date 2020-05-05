@@ -4,6 +4,7 @@ import { Link} from 'react-router-dom';
 
 
 const ProjectList = ({ projects}) => {
+    
     const projectItems = projects.map(project => {
         return (
          <Link to= {'project/' + project.id} key={project.id}><ProjectSummary project = {project} /></Link>
