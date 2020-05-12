@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import Container from '../../layout/Container/Container';
 import classes from './CreateProject.module.scss';
 import uploadLogo from '../../../img/upload.svg'
+import tick from '../../../img/tick.svg'
 
 
 class CreateProject extends Component {
@@ -14,6 +15,7 @@ class CreateProject extends Component {
         title:'',
         content:'',
         image:null,
+        uploaded:false
     };
     
     handleChange = event => {
@@ -23,8 +25,16 @@ class CreateProject extends Component {
     }
     handleSubmit = event => {
         event.preventDefault();
-        this.props.createProject(this.state);
-        this.props.history.push('/')
+        if (this.state.uploaded) {
+            this.props.createProject(this.state);
+            this.props.history.push('/')
+        }
+        else {
+            this.setState({
+                error:true
+            })
+        }
+        
         
     } 
 
@@ -32,12 +42,31 @@ class CreateProject extends Component {
         
         if (event.target.files) {
             const image = event.target.files[0];
-            this.setState(() => ({image}));
+            this.setState(() => ({image, uploaded:true}));
         }
     }
+    checkUpload = upload => {
+        let status,text;
+        if (upload) {
+            status = <img src={tick} className={classes['upload-image']} alt="upload-logo"/>;
+            text = 'Uploaded'
+        }
+        else {
+           status =  <img src={uploadLogo} className={classes['upload-image']} alt="upload-logo"/>
+           text = 'Upload Image'
+        }
+        return {status,text}
+    }
+
+    handleInput(e) {
+        e.target.style.height = 'inherit';
+        e.target.style.height = `${Math.max(150, e.target.scrollHeight)}px`;
+       
+      }
     render() {
         const {user} = this.props;
-        
+        const {uploaded,error} = this.state;
+        const imageStatus = this.checkUpload(uploaded);
         if (!user.uid) return <Redirect to='/signin'/>
         return (
             <Container>
@@ -51,14 +80,16 @@ class CreateProject extends Component {
 
                     <div className={classes["input-field"]}>
                         
-                        <textarea required onChange={this.handleChange} className={classes['textarea']} name="content" id="content" rows="6"  placeholder="Content"></textarea>
+                        <textarea  onInput = {this.handleInput} required onChange={this.handleChange} className={classes['textarea']} name="content" id="content" placeholder="Content"></textarea>
                         <label htmlFor="content" className={classes['label']}>Content</label>
                     </div>
                     <label htmlFor="file-upload" className={classes["custom-file-upload"]}>
-                        <img src={uploadLogo} className={classes['upload-image']} alt="upload-logo"/>
-                        Upload Image
+                        {imageStatus.status} 
+                        {imageStatus.text}
+                       
                     </label>
-                    <input id="file-upload" className={classes["file-upload"]} type="file" onChange={ this.handleImageUpload}/>
+                    {error ? <p className={classes['error']}> *Uploading Image is required</p>:null}
+                    <input id="file-upload" name="file-upload" className={classes["file-upload"]} type="file" onChange={ this.handleImageUpload}/>
                     
                    
                     <button className={classes["btn"]}>Create</button>

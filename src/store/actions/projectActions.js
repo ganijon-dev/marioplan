@@ -3,8 +3,7 @@ export const createProject = project => {
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
         const userID = getState().firebase.auth.uid;
-        console.log(profile, "profile");
-        console.log(userID, 'userID');
+
 
         const { image } = project;
         const uploadTask = storage.ref(`images/${image.name}`).put(image);

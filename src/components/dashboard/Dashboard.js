@@ -12,11 +12,19 @@ class Dashboard extends Component {
     
     render() {
         const { user , projects} = this.props;
+        
         if (!user.uid) return <Redirect to= '/signin'/> 
+        
         return (
-                 
+            
             <Container>
-                {projects ? <ProjectList projects = {projects} /> : <DashboardLoader/>}         
+              
+                {projects  ? <ProjectList projects = {projects} /> : (<div className='project-list'>
+                {Array(8).fill().map(item => {
+                    return <DashboardLoader/>})
+                }
+                </div>)}         
+                
             </Container>
         )
     }

@@ -27,12 +27,14 @@
     color: #999999;
 }
 
+.input {
+    padding: 25px 16px 6px;
+}
+
 .input,
 .textarea {
     width: 100% !important;
-    height: 100%;
     font-size: 20px;
-    padding: 25px 16px 6px;
     border: none;
     border-bottom: 1px solid #999999;
     background: none;
@@ -51,6 +53,15 @@
     &::placeholder {
         opacity: 0;
     }
+    &:focus {
+        border-bottom: 1px solid #0DCA78;
+    }
+}
+
+.textarea {
+    height: 150px;
+    overflow: hidden;
+    padding: 25px 16px 10px;
 }
 
 .btn {
@@ -97,4 +108,9 @@
 
 .upload-image {
     margin-right: 10px;
+}
+
+.error {
+    color: #ff5555;
+    font-size: 14px;
 }
